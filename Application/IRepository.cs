@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application
+namespace ApplicationBusiness
 {
     public interface IRepository<T>
     {
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
-        Task AddAsync(T beer);
+        Task AddAsync(T item);
     }
 }

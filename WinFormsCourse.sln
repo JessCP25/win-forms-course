@@ -7,11 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsCourse", "WinFormsC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{DA23C2F3-2B4C-4062-9CF0-C1BEF669BF72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{AD017344-E5C9-4C39-A131-6B64419A682E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationBusiness", "Application\ApplicationBusiness.csproj", "{AD017344-E5C9-4C39-A131-6B64419A682E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{02C2C105-0DFA-4F24-95CD-008D7E6A59EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{F6879932-8677-48E0-B0CB-B25D4DA19AF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{79A3798E-ACB9-4CD5-8915-CDE1AC054CA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F6879932-8677-48E0-B0CB-B25D4DA19AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6879932-8677-48E0-B0CB-B25D4DA19AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6879932-8677-48E0-B0CB-B25D4DA19AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79A3798E-ACB9-4CD5-8915-CDE1AC054CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79A3798E-ACB9-4CD5-8915-CDE1AC054CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79A3798E-ACB9-4CD5-8915-CDE1AC054CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79A3798E-ACB9-4CD5-8915-CDE1AC054CA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 ﻿using Entities;
 
-namespace Application
+namespace ApplicationBusiness
 {
     public class AddBrand
     {
