@@ -1,3 +1,6 @@
+using Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace WinFormsCourse
@@ -24,6 +27,13 @@ namespace WinFormsCourse
 
         private static void ConfigureServices(ServiceCollection services)
         {
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional:false, reloadOnChange: true)
+                .Build();
+
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("DB"));
+
             services.AddTransient<FormMain>();
             services.AddTransient<FormBrand>();
         }
