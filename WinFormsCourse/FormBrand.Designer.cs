@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dgv = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -41,23 +41,22 @@
             panel1.Size = new Size(800, 125);
             panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // dgv
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 125);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(800, 325);
-            dataGridView1.TabIndex = 1;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.Dock = DockStyle.Fill;
+            dgv.Location = new Point(0, 125);
+            dgv.Name = "dgv";
+            dgv.RowHeadersWidth = 51;
+            dgv.Size = new Size(800, 325);
+            dgv.TabIndex = 1;
             // 
             // FormBrand
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgv);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -65,13 +64,14 @@
             Name = "FormBrand";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormBrand";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += FormBrand_Load;
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private DataGridView dataGridView1;
+        private DataGridView dgv;
     }
 }
