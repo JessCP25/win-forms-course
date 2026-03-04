@@ -1,5 +1,6 @@
 ﻿using ApplicationBusiness;
 using Entities;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +16,13 @@ namespace WinFormsCourse
     public partial class FormBrand : Form
     {
         private readonly IRepository<Brand> _repository;
+        private readonly IServiceProvider _serviceProvider;
 
-        public FormBrand(IRepository<Brand> repository)
+        public FormBrand(IRepository<Brand> repository, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _repository = repository;
+            _serviceProvider = serviceProvider;
         }
 
         private async Task Refresh()
@@ -30,6 +33,14 @@ namespace WinFormsCourse
 
         private async void FormBrand_Load(object sender, EventArgs e)
         {
+            await Refresh();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<FormNewEditBrand>();
+            frm.ShowDialog();
+
             await Refresh();
         }
     }
