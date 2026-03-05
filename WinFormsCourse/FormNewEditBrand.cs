@@ -22,7 +22,7 @@ namespace WinFormsCourse
             _addBrand = addBrand;
         }
 
-        private void SetInfo(Brand brand)
+        public void SetInfo(Brand brand)
         {
             _id = brand.Id;
             txtBrand.Text = brand.Name;
