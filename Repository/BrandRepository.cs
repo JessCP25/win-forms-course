@@ -40,5 +40,25 @@ namespace Repository
                 Name = brandModel.Name,
             };
         }
+
+        public async Task EditAsync(Brand brand)
+        {
+            var model = await _dbContext.Brands.FindAsync(brand.id);
+
+            model.Name = brand.Name;
+
+            _dbContext.Entry(model).State = EntityState.Modified;
+
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var model = await _dbContext.Brands.FindAsync(id);
+
+            _dbContext.Brands.Remove(model);
+
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }
