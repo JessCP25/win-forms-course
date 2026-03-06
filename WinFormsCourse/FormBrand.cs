@@ -84,7 +84,8 @@ namespace WinFormsCourse
 
                 if (confirmResult == DialogResult.Yes)
                 {
-
+                    await _repository.DeleteAsync(id);
+                    await Refresh();
                 }
             }
         }
