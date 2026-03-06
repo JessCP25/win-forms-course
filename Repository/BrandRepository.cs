@@ -43,7 +43,7 @@ namespace Repository
 
         public async Task EditAsync(Brand brand)
         {
-            var model = await _dbContext.Brands.FindAsync(brand.id);
+            var model = await _dbContext.Brands.FindAsync(brand.Id);
 
             model.Name = brand.Name;
 

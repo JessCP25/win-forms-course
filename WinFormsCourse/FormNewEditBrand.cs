@@ -15,11 +15,13 @@ namespace WinFormsCourse
     public partial class FormNewEditBrand : Form
     {
         private readonly AddBrand _addBrand;
+        private readonly EditBrand _editBrand;
         private int _id;
-        public FormNewEditBrand(AddBrand addBrand)
+        public FormNewEditBrand(AddBrand addBrand, EditBrand editBrand)
         {
             InitializeComponent();
             _addBrand = addBrand;
+            _editBrand = editBrand;
         }
 
         public void SetInfo(Brand brand)
@@ -38,7 +40,7 @@ namespace WinFormsCourse
                     await Add();
                 }else
                 {
-
+                    await Edit();
                 }
             }
             catch (Exception ex) 
@@ -53,6 +55,18 @@ namespace WinFormsCourse
             await _addBrand.ExecuteAsync(new Brand()
             {
                 Name = name,
+            });
+
+            Close();
+        }
+
+        private async Task Edit()
+        {
+            string name = txtBrand.Text.Trim();
+            await _editBrand.ExecuteAsync(new Brand()
+            {
+                Id = _id,
+                Name = name
             });
 
             Close();
