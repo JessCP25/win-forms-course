@@ -69,23 +69,26 @@
             btnGuardar.Location = new Point(105, 193);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(160, 43);
-            btnGuardar.TabIndex = 3;
+            btnGuardar.TabIndex = 4;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
             txtNombre.Location = new Point(155, 40);
+            txtNombre.MaxLength = 50;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(154, 27);
-            txtNombre.TabIndex = 4;
+            txtNombre.TabIndex = 1;
             // 
             // txtAlcohol
             // 
             txtAlcohol.Location = new Point(155, 136);
+            txtAlcohol.MaxLength = 18;
             txtAlcohol.Name = "txtAlcohol";
             txtAlcohol.Size = new Size(154, 27);
-            txtAlcohol.TabIndex = 5;
+            txtAlcohol.TabIndex = 3;
+            txtAlcohol.KeyPress += txtAlcohol_KeyPress;
             // 
             // cboMarca
             // 
@@ -94,7 +97,7 @@
             cboMarca.Location = new Point(155, 93);
             cboMarca.Name = "cboMarca";
             cboMarca.Size = new Size(151, 28);
-            cboMarca.TabIndex = 6;
+            cboMarca.TabIndex = 2;
             // 
             // FormNewEditBeer
             // 

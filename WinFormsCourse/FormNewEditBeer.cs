@@ -32,8 +32,24 @@ namespace WinFormsCourse
             cboMarca.DisplayMember = "Name";
             cboMarca.ValueMember = "Id";
 
-            if (cboMarca.Items.Count > 0) {
+            if (cboMarca.Items.Count > 0)
+            {
                 cboMarca.SelectedIndex = 0;
+            }
+        }
+
+        private void txtAlcohol_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            var textBox = (sender as TextBox);
+
+            if(e.KeyChar == '.' && textBox.Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
             }
         }
     }
