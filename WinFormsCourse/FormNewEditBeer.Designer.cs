@@ -89,6 +89,7 @@
             // 
             // cboMarca
             // 
+            cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMarca.FormattingEnabled = true;
             cboMarca.Location = new Point(155, 93);
             cboMarca.Name = "cboMarca";
@@ -115,6 +116,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Nueva cerveza";
+            Load += FormNewEditBeer_Load;
             ResumeLayout(false);
             PerformLayout();
         }
