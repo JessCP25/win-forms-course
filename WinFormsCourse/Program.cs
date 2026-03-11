@@ -47,6 +47,7 @@ namespace WinFormsCourse
             services.AddTransient<FormMain>();
             services.AddTransient<FormBrand>();
             services.AddTransient<FormNewEditBrand>();
+            services.AddTransient<FormBeer>();
 
         }
     }

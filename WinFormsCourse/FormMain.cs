@@ -27,5 +27,11 @@ namespace WinFormsCourse
             var form = _serviceProvider.GetRequiredService<FormBrand>();
             form.ShowDialog();
         }
+
+        private void cervezasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = _serviceProvider.GetRequiredService<FormBeer>();
+            form.ShowDialog();
+        }
     }
 }
