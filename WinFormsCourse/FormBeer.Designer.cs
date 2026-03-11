@@ -69,6 +69,7 @@
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.Size = new Size(800, 325);
             dgv.TabIndex = 2;
+            dgv.CellContentClick += dgv_CellContentClick;
             // 
             // FormBeer
             // 
