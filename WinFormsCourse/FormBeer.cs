@@ -1,5 +1,6 @@
 ﻿using ApplicationBusiness;
 using Entities;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +55,7 @@ namespace WinFormsCourse
             dgv.Columns.Add(deleteButtonColumn);
         }
 
-        private async Task dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
@@ -63,17 +64,26 @@ namespace WinFormsCourse
             if (dgv.Columns[e.ColumnIndex].Name == "EditButton")
             {
 
-            }else if (dgv.Columns[e.ColumnIndex].Name == "DeleteButton")
+            }
+            else if (dgv.Columns[e.ColumnIndex].Name == "DeleteButton")
             {
                 var confirmResult = MessageBox.Show("¿Está seguro de eliminar la cerveza?", "Eliminar cerveza", MessageBoxButtons.YesNo);
 
-                if (confirmResult == DialogResult.Yes) 
+                if (confirmResult == DialogResult.Yes)
                 {
                     await _repository.DeleteAsync(id);
                     await Refresh();
                 }
-                
+
             }
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            var frm = _serviceProvider.GetRequiredService<FormNewEditBeer>();
+            frm.ShowDialog();
+
+            await Refresh();
         }
     }
 }

@@ -52,6 +52,7 @@
             button1.TabIndex = 0;
             button1.Text = "Nueva Cerveza";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // dgv
             // 
