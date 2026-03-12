@@ -63,7 +63,14 @@ namespace WinFormsCourse
 
             if (dgv.Columns[e.ColumnIndex].Name == "EditButton")
             {
+                var frm = _serviceProvider.GetRequiredService<FormNewEditBeer>();
+                var beer = await _repository.GetByIdAsync(id);
 
+                frm.SetBeer(beer);
+
+                frm.ShowDialog();
+
+                await Refresh();
             }
             else if (dgv.Columns[e.ColumnIndex].Name == "DeleteButton")
             {

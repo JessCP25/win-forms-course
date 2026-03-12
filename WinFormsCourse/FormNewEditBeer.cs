@@ -16,22 +16,29 @@ namespace WinFormsCourse
     {
         private readonly IRepository<Brand> _brandRepository;
         private readonly AddBeer _addBeer;
+        private readonly EditBeer _editBeer;
         private Beer _beer;
         public void SetBeer(Beer beer)
         {
             _beer = beer;
         }
 
-        public FormNewEditBeer(IRepository<Brand> brandRepository, AddBeer addBeer)
+        public FormNewEditBeer(IRepository<Brand> brandRepository, AddBeer addBeer, EditBeer editBeer)
         {
             InitializeComponent();
             _brandRepository = brandRepository;
             _addBeer = addBeer;
+            _editBeer = editBeer;
         }
 
         private async void FormNewEditBeer_Load(object sender, EventArgs e)
         {
             await ChargeData();
+
+            if (_beer != null) 
+            {
+                SetInfo();
+            }
         }
 
         private async Task ChargeData()
@@ -44,6 +51,14 @@ namespace WinFormsCourse
             {
                 cboMarca.SelectedIndex = 0;
             }
+        }
+
+        public void SetInfo()
+        {
+            Text = "Editar cerveza";
+            txtNombre.Text = _beer.Name;
+            cboMarca.SelectedValue = _beer.BrandId;
+            txtAlcohol.Text = _beer.Alcohol.ToString();
         }
 
         private void txtAlcohol_KeyPress(object sender, KeyPressEventArgs e)
@@ -71,7 +86,7 @@ namespace WinFormsCourse
                 }
                 else
                 {
-
+                    await Edit();
                 }
             }
             catch (Exception ex)
@@ -88,6 +103,23 @@ namespace WinFormsCourse
 
             await _addBeer.ExecuteAsync(new Beer()
             {
+                Name = name,
+                BrandId = idBrand,
+                Alcohol = alcohol,
+            });
+
+            this.Close();
+        }
+
+        private async Task Edit()
+        {
+            string name = txtNombre.Text.Trim();
+            int idBrand = int.Parse(cboMarca.SelectedValue.ToString());
+            decimal alcohol = decimal.Parse(txtAlcohol.Text.Trim().ToString());
+
+            await _editBeer.ExecuteAsync(new Beer()
+            {
+                Id = _beer.Id,
                 Name = name,
                 BrandId = idBrand,
                 Alcohol = alcohol,
