@@ -5,10 +5,10 @@ namespace ApplicationBusiness
 {
     public class AddBeer<TAdditionalData>
     {
-        private readonly IRepository<Beer> _repositoryBeer;
+        private readonly IRepositoryAdditionalData<Beer, TAdditionalData> _repositoryBeer;
         private readonly IMapper<BeerDTO,Beer > _mapperEntity;
         private readonly IMapper<BeerDTO, TAdditionalData> _mapperAdditionalData;
-        public AddBeer(IRepository<Beer> repositoryBeer, IMapper<BeerDTO, Beer> mapperEntity, IMapper<BeerDTO, TAdditionalData> mapperAdditionalData)
+        public AddBeer(IRepositoryAdditionalData<Beer, TAdditionalData> repositoryBeer, IMapper<BeerDTO, Beer> mapperEntity, IMapper<BeerDTO, TAdditionalData> mapperAdditionalData)
         {
             _repositoryBeer = repositoryBeer;
             _mapperEntity = mapperEntity;
@@ -25,7 +25,7 @@ namespace ApplicationBusiness
                 throw new Exception("El nombre de la cerveza es obligatorio");
             }
 
-            await _repositoryBeer.AddAsync(beer);
+            await _repositoryBeer.AddAsync(beer, beerAdditionalData);
         }
     }
 

@@ -3,24 +3,25 @@ using Data;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Repository.AdditionalDataClass;
 
 namespace Repository
 {
-    public class BeerRepository: IRepository<Beer>
+    public class BeerRepository: IRepositoryAdditionalData<Beer, BeerAdditionalData>
     {
         private readonly AppDbContext _dbContext;
         public BeerRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public async Task AddAsync(Beer beer)
+        public async Task AddAsync(Beer beer, BeerAdditionalData beerAdditionalData)
         {
             var beerModel = new BeerModel()
             {
-                Id = beer.Id,
                 Name = beer.Name,
                 BrandId = beer.BrandId,
                 Alcohol = beer.Alcohol,
+                Description = beerAdditionalData.Description,
             };
             await _dbContext.AddAsync(beerModel);
             await _dbContext.SaveChangesAsync();
