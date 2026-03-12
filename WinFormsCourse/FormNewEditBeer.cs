@@ -15,10 +15,18 @@ namespace WinFormsCourse
     public partial class FormNewEditBeer : Form
     {
         private readonly IRepository<Brand> _brandRepository;
-        public FormNewEditBeer(IRepository<Brand> brandRepository)
+        private readonly AddBeer _addBeer;
+        private Beer _beer;
+        public void SetBeer(Beer beer)
+        {
+            _beer = beer;
+        }
+
+        public FormNewEditBeer(IRepository<Brand> brandRepository, AddBeer addBeer)
         {
             InitializeComponent();
             _brandRepository = brandRepository;
+            _addBeer = addBeer;
         }
 
         private async void FormNewEditBeer_Load(object sender, EventArgs e)
@@ -40,17 +48,52 @@ namespace WinFormsCourse
 
         private void txtAlcohol_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && !char.IsControl(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
 
             var textBox = (sender as TextBox);
 
-            if(e.KeyChar == '.' && textBox.Text.IndexOf('.') > -1)
+            if (e.KeyChar == '.' && textBox.Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
             }
+        }
+
+        private async void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(_beer == null)
+                {
+                    await Add();
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async Task Add()
+        {
+            string name = txtNombre.Text.Trim();
+            int idBrand = int.Parse(cboMarca.SelectedValue.ToString());
+            decimal alcohol = decimal.Parse(txtAlcohol.Text.Trim().ToString());
+
+            await _addBeer.ExecuteAsync(new Beer()
+            {
+                Name = name,
+                BrandId = idBrand,
+                Alcohol = alcohol,
+            });
+
+            this.Close();
         }
     }
 }

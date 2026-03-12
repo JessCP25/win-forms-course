@@ -2,6 +2,7 @@
 using Data;
 using Entities;
 using Microsoft.EntityFrameworkCore;
+using Models;
 
 namespace Repository
 {
@@ -14,7 +15,7 @@ namespace Repository
         }
         public async Task AddAsync(Beer beer)
         {
-            var beerModel = new Beer()
+            var beerModel = new BeerModel()
             {
                 Id = beer.Id,
                 Name = beer.Name,
