@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using ApplicationBusiness.DTOs;
+using Entities;
 
 namespace ApplicationBusiness
 {
@@ -10,7 +11,7 @@ namespace ApplicationBusiness
             _repositoryBeer = repositoryBeer;
         }
 
-        public async Task ExecuteAsync(Beer beer)
+        public async Task ExecuteAsync(BeerDTO beer)
         {
             if (string.IsNullOrEmpty(beer.Name))
             {
