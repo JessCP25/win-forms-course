@@ -19,8 +19,8 @@ namespace WinFormsCourse
         private readonly IRepository<Brand> _brandRepository;
         private readonly AddBeer<BeerAdditionalData> _addBeer;
         private readonly EditBeer<BeerAdditionalData> _editBeer;
-        private Beer _beer;
-        public void SetBeer(Beer beer)
+        private BeerDTO _beer;
+        public void SetBeer(BeerDTO beer)
         {
             _beer = beer;
         }
@@ -61,6 +61,7 @@ namespace WinFormsCourse
             txtNombre.Text = _beer.Name;
             cboMarca.SelectedValue = _beer.BrandId;
             txtAlcohol.Text = _beer.Alcohol.ToString();
+            txtDescription.Text = _beer.Description;
         }
 
         private void txtAlcohol_KeyPress(object sender, KeyPressEventArgs e)

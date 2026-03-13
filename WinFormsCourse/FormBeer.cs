@@ -17,12 +17,16 @@ namespace WinFormsCourse
     public partial class FormBeer : Form
     {
         private readonly IRepositoryAdditionalData<Beer, BeerAdditionalData> _repository;
+        private readonly GetBeerById<BeerAdditionalData> _getBeerById;
         private readonly IServiceProvider _serviceProvider;
-        public FormBeer(IRepositoryAdditionalData<Beer, BeerAdditionalData> repository, IServiceProvider serviceProvider)
+        public FormBeer(IRepositoryAdditionalData<Beer, BeerAdditionalData> repository, 
+            IServiceProvider serviceProvider, 
+            GetBeerById<BeerAdditionalData> getBeerById)
         {
             InitializeComponent();
             _repository = repository;
             _serviceProvider = serviceProvider;
+            _getBeerById = getBeerById;
         }
 
         private async Task Refresh()
@@ -65,9 +69,9 @@ namespace WinFormsCourse
             if (dgv.Columns[e.ColumnIndex].Name == "EditButton")
             {
                 var frm = _serviceProvider.GetRequiredService<FormNewEditBeer>();
-                var beer = await _repository.GetByIdAsync(id);
+                var beerDTO = await _getBeerById.ExecuteAsync(id);
 
-                frm.SetBeer(beer);
+                frm.SetBeer(beerDTO);
 
                 frm.ShowDialog();
 
