@@ -1,6 +1,7 @@
 ﻿using ApplicationBusiness;
 using Entities;
 using Microsoft.Extensions.DependencyInjection;
+using Repository.AdditionalDataClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +16,9 @@ namespace WinFormsCourse
 {
     public partial class FormBeer : Form
     {
-        private readonly IRepository<Beer> _repository;
+        private readonly IRepositoryAdditionalData<Beer, BeerAdditionalData> _repository;
         private readonly IServiceProvider _serviceProvider;
-        public FormBeer(IRepository<Beer> repository, IServiceProvider serviceProvider)
+        public FormBeer(IRepositoryAdditionalData<Beer, BeerAdditionalData> repository, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _repository = repository;

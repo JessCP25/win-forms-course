@@ -2,10 +2,10 @@
 
 namespace ApplicationBusiness
 {
-    public class EditBeer
+    public class EditBeer<TAdditionalData>
     {
-        private readonly IRepository<Beer> _repository;
-        public EditBeer(IRepository<Beer> repository)
+        private readonly IRepositoryAdditionalData<Beer, TAdditionalData> _repository;
+        public EditBeer(IRepositoryAdditionalData<Beer, TAdditionalData> repository)
         {
             _repository = repository;
         }

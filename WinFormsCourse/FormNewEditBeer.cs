@@ -1,5 +1,7 @@
 ﻿using ApplicationBusiness;
+using ApplicationBusiness.DTOs;
 using Entities;
+using Repository.AdditionalDataClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,15 +17,15 @@ namespace WinFormsCourse
     public partial class FormNewEditBeer : Form
     {
         private readonly IRepository<Brand> _brandRepository;
-        private readonly AddBeer _addBeer;
-        private readonly EditBeer _editBeer;
+        private readonly AddBeer<BeerAdditionalData> _addBeer;
+        private readonly EditBeer<BeerAdditionalData> _editBeer;
         private Beer _beer;
         public void SetBeer(Beer beer)
         {
             _beer = beer;
         }
 
-        public FormNewEditBeer(IRepository<Brand> brandRepository, AddBeer addBeer, EditBeer editBeer)
+        public FormNewEditBeer(IRepository<Brand> brandRepository, AddBeer<BeerAdditionalData> addBeer, EditBeer<BeerAdditionalData> editBeer)
         {
             InitializeComponent();
             _brandRepository = brandRepository;
@@ -101,11 +103,12 @@ namespace WinFormsCourse
             int idBrand = int.Parse(cboMarca.SelectedValue.ToString());
             decimal alcohol = decimal.Parse(txtAlcohol.Text.Trim().ToString());
 
-            await _addBeer.ExecuteAsync(new Beer()
+            await _addBeer.ExecuteAsync(new BeerDTO()
             {
                 Name = name,
                 BrandId = idBrand,
                 Alcohol = alcohol,
+                Description = "Nueva descripcion"
             });
 
             this.Close();
