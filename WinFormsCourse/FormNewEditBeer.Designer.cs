@@ -35,6 +35,8 @@
             txtNombre = new TextBox();
             txtAlcohol = new TextBox();
             cboMarca = new ComboBox();
+            txtDescription = new TextBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -66,10 +68,10 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(105, 193);
+            btnGuardar.Location = new Point(99, 251);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(160, 43);
-            btnGuardar.TabIndex = 4;
+            btnGuardar.TabIndex = 5;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
@@ -100,11 +102,30 @@
             cboMarca.Size = new Size(151, 28);
             cboMarca.TabIndex = 2;
             // 
+            // txtDescription
+            // 
+            txtDescription.Location = new Point(155, 190);
+            txtDescription.MaxLength = 50;
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(154, 27);
+            txtDescription.TabIndex = 4;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(47, 193);
+            label4.Name = "label4";
+            label4.Size = new Size(90, 20);
+            label4.TabIndex = 5;
+            label4.Text = "Descripcion:";
+            // 
             // FormNewEditBeer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(361, 264);
+            ClientSize = new Size(361, 326);
+            Controls.Add(txtDescription);
+            Controls.Add(label4);
             Controls.Add(cboMarca);
             Controls.Add(txtAlcohol);
             Controls.Add(txtNombre);
@@ -134,5 +155,7 @@
         private TextBox txtNombre;
         private TextBox txtAlcohol;
         private ComboBox cboMarca;
+        private TextBox txtDescription;
+        private Label label4;
     }
 }

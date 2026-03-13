@@ -102,13 +102,14 @@ namespace WinFormsCourse
             string name = txtNombre.Text.Trim();
             int idBrand = int.Parse(cboMarca.SelectedValue.ToString());
             decimal alcohol = decimal.Parse(txtAlcohol.Text.Trim().ToString());
+            string description = txtDescription.Text.Trim();
 
             await _addBeer.ExecuteAsync(new BeerDTO()
             {
                 Name = name,
                 BrandId = idBrand,
                 Alcohol = alcohol,
-                Description = "Nueva descripcion"
+                Description = description
             });
 
             this.Close();
