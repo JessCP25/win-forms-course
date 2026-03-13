@@ -17,7 +17,7 @@ namespace ApplicationBusiness
                 throw new Exception("El nombre de la cerveza es obligatorio");
             }
 
-            if (await _repository.GetByIdAsync(beer.Id) == null) 
+            if ((await _repository.GetByIdAsync(beer.Id)).Item1 == null) 
             {
                 throw new Exception("Cerveza no existente");
             }

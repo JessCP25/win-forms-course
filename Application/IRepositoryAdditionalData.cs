@@ -8,7 +8,7 @@ namespace ApplicationBusiness
 {
     public interface IRepositoryAdditionalData<T, TAdditionalData>
     {
-        Task<T> GetByIdAsync(int id);
+        Task<(T, TAdditionalData)> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
         Task AddAsync(T item, TAdditionalData additionalData);
         Task EditAsync(T item);

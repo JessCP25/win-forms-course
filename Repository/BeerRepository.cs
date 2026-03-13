@@ -34,16 +34,22 @@ namespace Repository
                 BrandId = b.BrandId,
                 Alcohol = b.Alcohol,
             }).ToListAsync();
-        public async Task<Beer> GetByIdAsync(int id)
+        public async Task<(Beer, BeerAdditionalData)> GetByIdAsync(int id)
         {
             var beerModel = await _dbContext.Beers.FindAsync(id);
-            return new Beer()
+            var beer = new Beer()
             {
                 Id = beerModel.Id,
                 Name = beerModel.Name,
                 BrandId = beerModel.BrandId,
                 Alcohol = beerModel.Alcohol,
             };
+            var beerAdditionalData = new BeerAdditionalData()
+            {
+                Description = beerModel.Description
+            };
+
+            return (beer, beerAdditionalData);
         }
         public async Task EditAsync(Beer beer)
         {
