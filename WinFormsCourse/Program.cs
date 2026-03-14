@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Repository;
 using Repository.AdditionalDataClass;
 using Repository.Mappers;
+using Repository.QueryObjects;
 
 namespace WinFormsCourse
 {
@@ -51,6 +52,7 @@ namespace WinFormsCourse
             services.AddTransient<IMapper<BeerDTO, Beer>, MapperToBeerEntity>();
             services.AddTransient<IMapper<BeerDTO, BeerAdditionalData>, MapperToBeerAdditionalData>();
             services.AddTransient<ISuperMapper<Beer, BeerAdditionalData, BeerDTO>, SuperMapperToBeerDTO>();
+            services.AddTransient<BeerWithBrandQuery>();
 
             services.AddTransient<FormMain>();
             services.AddTransient<FormBrand>();

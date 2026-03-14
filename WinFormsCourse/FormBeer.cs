@@ -2,6 +2,7 @@
 using Entities;
 using Microsoft.Extensions.DependencyInjection;
 using Repository.AdditionalDataClass;
+using Repository.QueryObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,21 +18,24 @@ namespace WinFormsCourse
     public partial class FormBeer : Form
     {
         private readonly IRepositoryAdditionalData<Beer, BeerAdditionalData> _repository;
+        private readonly BeerWithBrandQuery _query;
         private readonly GetBeerById<BeerAdditionalData> _getBeerById;
         private readonly IServiceProvider _serviceProvider;
         public FormBeer(IRepositoryAdditionalData<Beer, BeerAdditionalData> repository, 
             IServiceProvider serviceProvider, 
-            GetBeerById<BeerAdditionalData> getBeerById)
+            GetBeerById<BeerAdditionalData> getBeerById,
+            BeerWithBrandQuery query)
         {
             InitializeComponent();
             _repository = repository;
             _serviceProvider = serviceProvider;
             _getBeerById = getBeerById;
+            _query = query;
         }
 
         private async Task Refresh()
         {
-            var beers = await _repository.GetAllAsync();
+            var beers = await _query.GetAsync();
             dgv.DataSource = beers;
         }
 
