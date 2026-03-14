@@ -121,13 +121,15 @@ namespace WinFormsCourse
             string name = txtNombre.Text.Trim();
             int idBrand = int.Parse(cboMarca.SelectedValue.ToString());
             decimal alcohol = decimal.Parse(txtAlcohol.Text.Trim().ToString());
+            string description = txtDescription.Text.Trim();
 
-            await _editBeer.ExecuteAsync(new Beer()
+            await _editBeer.ExecuteAsync(new BeerDTO()
             {
                 Id = _beer.Id,
                 Name = name,
                 BrandId = idBrand,
                 Alcohol = alcohol,
+                Description = description
             });
 
             this.Close();

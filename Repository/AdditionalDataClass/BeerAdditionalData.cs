@@ -8,6 +8,6 @@ namespace Repository.AdditionalDataClass
 {
     public class BeerAdditionalData
     {
-        public string Description { get; set; }
+        public string Description { get; set; } = "";
     }
 }

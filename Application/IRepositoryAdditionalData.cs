@@ -11,7 +11,7 @@ namespace ApplicationBusiness
         Task<(T, TAdditionalData)> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
         Task AddAsync(T item, TAdditionalData additionalData);
-        Task EditAsync(T item);
+        Task EditAsync(T item, TAdditionalData additionalData);
         Task DeleteAsync(int id);
     }
 }

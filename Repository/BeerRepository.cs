@@ -51,13 +51,14 @@ namespace Repository
 
             return (beer, beerAdditionalData);
         }
-        public async Task EditAsync(Beer beer)
+        public async Task EditAsync(Beer beer, BeerAdditionalData beerAdditionalData)
         {
             var beerModel = await _dbContext.Beers.FindAsync(beer.Id);
 
             beerModel.Name = beer.Name;
             beerModel.BrandId = beer.BrandId;
             beerModel.Alcohol = beer.Alcohol;
+            beerModel.Description = beerAdditionalData.Description;
 
             _dbContext.Entry(beerModel).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
