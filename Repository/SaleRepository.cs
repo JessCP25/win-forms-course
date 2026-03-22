@@ -1,6 +1,7 @@
 ﻿using ApplicationBusiness;
 using Data;
 using Entities;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class SaleRepository: IRepositorySimple<Sale>
+    public class SaleRepository : IRepositorySimple<Sale>
     {
         private readonly AppDbContext _dbContext;
         public SaleRepository(AppDbContext dbContext)
@@ -33,5 +34,12 @@ namespace Repository
             await _dbContext.Sales.AddAsync(saleModel);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<Sale>> GetAllAsync()
+            => await _dbContext.Sales
+                .Select(s => new Sale(s.Id, s.CreationDate,
+                        _dbContext.Concepts
+                        .Where(c => c.IdSale == s.Id)
+                    .Select(c => new Concept(c.Quantity, c.IdBeer, c.UnitPrice)).ToList())).ToListAsync();
     }
 }
