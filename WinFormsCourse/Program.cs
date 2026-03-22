@@ -44,12 +44,15 @@ namespace WinFormsCourse
 
             services.AddTransient<AddBrand>();
             services.AddTransient<EditBrand>();
+            services.AddTransient<CreateSale>();
             services.AddTransient<AddBeer<BeerAdditionalData>>();
             services.AddTransient<EditBeer<BeerAdditionalData>>();
             services.AddTransient<GetBeerById<BeerAdditionalData>>();
             services.AddTransient<IRepository<Brand>, BrandRepository>();
+            services.AddTransient<IRepositorySimple<Sale>, SaleRepository>();
             services.AddTransient<IRepositoryAdditionalData<Beer, BeerAdditionalData>, BeerRepository>();
             services.AddTransient<IMapper<BeerDTO, Beer>, MapperToBeerEntity>();
+            services.AddTransient<IMapper<SaleDTO, Sale>, MapperToSaleEntity>();
             services.AddTransient<IMapper<BeerDTO, BeerAdditionalData>, MapperToBeerAdditionalData>();
             services.AddTransient<ISuperMapper<Beer, BeerAdditionalData, BeerDTO>, SuperMapperToBeerDTO>();
             services.AddTransient<BeerWithBrandQuery>();
@@ -59,7 +62,7 @@ namespace WinFormsCourse
             services.AddTransient<FormNewEditBrand>();
             services.AddTransient<FormBeer>();
             services.AddTransient<FormNewEditBeer>();
-
+            services.AddTransient<FormNewSale>();
         }
     }
 }
