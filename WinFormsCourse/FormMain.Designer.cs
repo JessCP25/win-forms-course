@@ -96,6 +96,7 @@
             btnVenta.TabIndex = 0;
             btnVenta.Text = "Nueva venta";
             btnVenta.UseVisualStyleBackColor = true;
+            btnVenta.Click += btnVenta_Click;
             // 
             // FormMain
             // 

@@ -33,5 +33,11 @@ namespace WinFormsCourse
             var form = _serviceProvider.GetRequiredService<FormBeer>();
             form.ShowDialog();
         }
+
+        private void btnVenta_Click(object sender, EventArgs e)
+        {
+            var form = _serviceProvider.GetRequiredService<FormNewSale>();
+            form.ShowDialog();
+        }
     }
 }
