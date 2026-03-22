@@ -37,6 +37,9 @@
             cboMarca = new ComboBox();
             txtDescription = new TextBox();
             label4 = new Label();
+            label5 = new Label();
+            txtPrice = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)txtPrice).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -68,10 +71,10 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(99, 251);
+            btnGuardar.Location = new Point(102, 316);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(160, 43);
-            btnGuardar.TabIndex = 5;
+            btnGuardar.TabIndex = 6;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
@@ -119,11 +122,29 @@
             label4.TabIndex = 5;
             label4.Text = "Descripcion:";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(47, 243);
+            label5.Name = "label5";
+            label5.Size = new Size(53, 20);
+            label5.TabIndex = 6;
+            label5.Text = "Precio:";
+            // 
+            // txtPrice
+            // 
+            txtPrice.Location = new Point(155, 241);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(150, 27);
+            txtPrice.TabIndex = 5;
+            // 
             // FormNewEditBeer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(361, 326);
+            ClientSize = new Size(361, 391);
+            Controls.Add(txtPrice);
+            Controls.Add(label5);
             Controls.Add(txtDescription);
             Controls.Add(label4);
             Controls.Add(cboMarca);
@@ -142,6 +163,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Nueva cerveza";
             Load += FormNewEditBeer_Load;
+            ((System.ComponentModel.ISupportInitialize)txtPrice).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -157,5 +179,7 @@
         private ComboBox cboMarca;
         private TextBox txtDescription;
         private Label label4;
+        private Label label5;
+        private NumericUpDown txtPrice;
     }
 }

@@ -2,15 +2,6 @@
 using ApplicationBusiness.DTOs;
 using Entities;
 using Repository.AdditionalDataClass;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WinFormsCourse
 {
@@ -62,6 +53,7 @@ namespace WinFormsCourse
             cboMarca.SelectedValue = _beer.BrandId;
             txtAlcohol.Text = _beer.Alcohol.ToString();
             txtDescription.Text = _beer.Description;
+            txtPrice.Value = _beer.Price;
         }
 
         private void txtAlcohol_KeyPress(object sender, KeyPressEventArgs e)
@@ -104,13 +96,15 @@ namespace WinFormsCourse
             int idBrand = int.Parse(cboMarca.SelectedValue.ToString());
             decimal alcohol = decimal.Parse(txtAlcohol.Text.Trim().ToString());
             string description = txtDescription.Text.Trim();
+            decimal price = txtPrice.Value;
 
             await _addBeer.ExecuteAsync(new BeerDTO()
             {
                 Name = name,
                 BrandId = idBrand,
                 Alcohol = alcohol,
-                Description = description
+                Description = description,
+                Price = price,
             });
 
             this.Close();
@@ -122,6 +116,7 @@ namespace WinFormsCourse
             int idBrand = int.Parse(cboMarca.SelectedValue.ToString());
             decimal alcohol = decimal.Parse(txtAlcohol.Text.Trim().ToString());
             string description = txtDescription.Text.Trim();
+            decimal price = txtPrice.Value;
 
             await _editBeer.ExecuteAsync(new BeerDTO()
             {
@@ -129,7 +124,8 @@ namespace WinFormsCourse
                 Name = name,
                 BrandId = idBrand,
                 Alcohol = alcohol,
-                Description = description
+                Description = description,
+                Price = price,
             });
 
             this.Close();

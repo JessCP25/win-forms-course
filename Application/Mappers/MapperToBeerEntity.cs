@@ -13,6 +13,7 @@ namespace ApplicationBusiness.Mappers
                 Name = beerDTO.Name,
                 BrandId = beerDTO.BrandId,
                 Alcohol = beerDTO.Alcohol,
+                Price = beerDTO.Price,
             };
         }
     }
