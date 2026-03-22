@@ -33,7 +33,10 @@
             configuraciToolStripMenuItem = new ToolStripMenuItem();
             marcasToolStripMenuItem = new ToolStripMenuItem();
             cervezasToolStripMenuItem = new ToolStripMenuItem();
+            panel1 = new Panel();
+            btnVenta = new Button();
             menuStrip2.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -65,22 +68,41 @@
             // marcasToolStripMenuItem
             // 
             marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            marcasToolStripMenuItem.Size = new Size(224, 26);
+            marcasToolStripMenuItem.Size = new Size(150, 26);
             marcasToolStripMenuItem.Text = "Marcas";
             marcasToolStripMenuItem.Click += marcasToolStripMenuItem_Click;
             // 
             // cervezasToolStripMenuItem
             // 
             cervezasToolStripMenuItem.Name = "cervezasToolStripMenuItem";
-            cervezasToolStripMenuItem.Size = new Size(224, 26);
+            cervezasToolStripMenuItem.Size = new Size(150, 26);
             cervezasToolStripMenuItem.Text = "Cervezas";
             cervezasToolStripMenuItem.Click += cervezasToolStripMenuItem_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnVenta);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 52);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 89);
+            panel1.TabIndex = 2;
+            // 
+            // btnVenta
+            // 
+            btnVenta.Location = new Point(37, 24);
+            btnVenta.Name = "btnVenta";
+            btnVenta.Size = new Size(164, 42);
+            btnVenta.TabIndex = 0;
+            btnVenta.Text = "Nueva venta";
+            btnVenta.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(panel1);
             Controls.Add(menuStrip1);
             Controls.Add(menuStrip2);
             MainMenuStrip = menuStrip1;
@@ -90,6 +112,7 @@
             Load += Form1_Load;
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -101,5 +124,7 @@
         private ToolStripMenuItem configuraciToolStripMenuItem;
         private ToolStripMenuItem marcasToolStripMenuItem;
         private ToolStripMenuItem cervezasToolStripMenuItem;
+        private Panel panel1;
+        private Button btnVenta;
     }
 }
