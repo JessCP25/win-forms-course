@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             cboBeer = new ComboBox();
             label2 = new Label();
             txtQuantity = new NumericUpDown();
             btnAdd = new Button();
             dgv = new DataGridView();
-            btnSale = new Button();
             IdBeer = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewLinkColumn();
             BeerName = new DataGridViewLinkColumn();
             UnitPrice = new DataGridViewLinkColumn();
             Total = new DataGridViewLinkColumn();
+            btnSale = new Button();
             ((System.ComponentModel.ISupportInitialize)txtQuantity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
@@ -106,15 +106,6 @@
             dgv.Size = new Size(663, 221);
             dgv.TabIndex = 5;
             // 
-            // btnSale
-            // 
-            btnSale.Location = new Point(496, 326);
-            btnSale.Name = "btnSale";
-            btnSale.Size = new Size(201, 42);
-            btnSale.TabIndex = 6;
-            btnSale.Text = "Agregar Venta";
-            btnSale.UseVisualStyleBackColor = true;
-            // 
             // IdBeer
             // 
             IdBeer.HeaderText = "IdBeer";
@@ -142,9 +133,9 @@
             // 
             // UnitPrice
             // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = "0";
-            UnitPrice.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = "0";
+            UnitPrice.DefaultCellStyle = dataGridViewCellStyle1;
             UnitPrice.HeaderText = "Precio unitario";
             UnitPrice.MinimumWidth = 6;
             UnitPrice.Name = "UnitPrice";
@@ -153,14 +144,24 @@
             // 
             // Total
             // 
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = "0";
-            Total.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = "0";
+            Total.DefaultCellStyle = dataGridViewCellStyle2;
             Total.HeaderText = "Total";
             Total.MinimumWidth = 6;
             Total.Name = "Total";
             Total.ReadOnly = true;
             Total.Width = 125;
+            // 
+            // btnSale
+            // 
+            btnSale.Location = new Point(496, 326);
+            btnSale.Name = "btnSale";
+            btnSale.Size = new Size(201, 42);
+            btnSale.TabIndex = 6;
+            btnSale.Text = "Agregar Venta";
+            btnSale.UseVisualStyleBackColor = true;
+            btnSale.Click += btnSale_Click;
             // 
             // FormNewSale
             // 

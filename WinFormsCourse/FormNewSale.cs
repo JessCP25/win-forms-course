@@ -1,17 +1,21 @@
 ﻿using ApplicationBusiness;
+using ApplicationBusiness.DTOs;
 using Entities;
 using Repository.AdditionalDataClass;
+using System.Threading.Tasks;
 
 namespace WinFormsCourse
 {
     public partial class FormNewSale : Form
     {
         private readonly IRepositoryAdditionalData<Beer, BeerAdditionalData> _beerRepository;
+        private readonly CreateSale _createSale;
 
-        public FormNewSale(IRepositoryAdditionalData<Beer, BeerAdditionalData> beerRepository)
+        public FormNewSale(IRepositoryAdditionalData<Beer, BeerAdditionalData> beerRepository, CreateSale createSale)
         {
             InitializeComponent();
             _beerRepository = beerRepository;
+            _createSale = createSale;
         }
 
         private async Task ChargeData()
@@ -40,11 +44,32 @@ namespace WinFormsCourse
             dgv.Rows.Add(idBeer, quantity, name, unitPrice, unitPrice * quantity);
 
             txtQuantity.Value = 1;
-            if(cboBeer.Items.Count > 0)
+            if (cboBeer.Items.Count > 0)
             {
                 cboBeer.SelectedIndex = 0;
             }
             cboBeer.Focus();
+        }
+
+        private async void btnSale_Click(object sender, EventArgs e)
+        {
+            var saleDTO = new SaleDTO();
+            saleDTO.Concepts = new List<ConceptDTO>();
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                var conceptDTO = new ConceptDTO()
+                {
+                    IdBeer = int.Parse(row.Cells[0].Value.ToString()),
+                    UnitPrice = decimal.Parse(row.Cells[3].Value.ToString()),
+                    Quantity = int.Parse(row.Cells[1].Value.ToString())
+                };
+
+                saleDTO.Concepts.Add(conceptDTO);
+            }
+
+            await _createSale.ExecuteAsync(saleDTO);
+            this.Close();
         }
     }
 }
