@@ -53,23 +53,31 @@ namespace WinFormsCourse
 
         private async void btnSale_Click(object sender, EventArgs e)
         {
-            var saleDTO = new SaleDTO();
-            saleDTO.Concepts = new List<ConceptDTO>();
-
-            foreach (DataGridViewRow row in dgv.Rows)
+            try
             {
-                var conceptDTO = new ConceptDTO()
-                {
-                    IdBeer = int.Parse(row.Cells[0].Value.ToString()),
-                    UnitPrice = decimal.Parse(row.Cells[3].Value.ToString()),
-                    Quantity = int.Parse(row.Cells[1].Value.ToString())
-                };
+                var saleDTO = new SaleDTO();
+                saleDTO.Concepts = new List<ConceptDTO>();
 
-                saleDTO.Concepts.Add(conceptDTO);
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    var conceptDTO = new ConceptDTO()
+                    {
+                        IdBeer = int.Parse(row.Cells[0].Value.ToString()),
+                        UnitPrice = decimal.Parse(row.Cells[3].Value.ToString()),
+                        Quantity = int.Parse(row.Cells[1].Value.ToString())
+                    };
+
+                    saleDTO.Concepts.Add(conceptDTO);
+                }
+
+                await _createSale.ExecuteAsync(saleDTO);
+                this.Close();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Ocurrio un error: " + ex.Message);
             }
 
-            await _createSale.ExecuteAsync(saleDTO);
-            this.Close();
         }
     }
 }
