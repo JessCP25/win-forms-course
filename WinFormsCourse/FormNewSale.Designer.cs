@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             cboBeer = new ComboBox();
             label2 = new Label();
@@ -42,6 +42,8 @@
             UnitPrice = new DataGridViewLinkColumn();
             Total = new DataGridViewLinkColumn();
             btnSale = new Button();
+            label3 = new Label();
+            lblTotal = new Label();
             ((System.ComponentModel.ISupportInitialize)txtQuantity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
@@ -133,9 +135,9 @@
             // 
             // UnitPrice
             // 
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = "0";
-            UnitPrice.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = "0";
+            UnitPrice.DefaultCellStyle = dataGridViewCellStyle3;
             UnitPrice.HeaderText = "Precio unitario";
             UnitPrice.MinimumWidth = 6;
             UnitPrice.Name = "UnitPrice";
@@ -144,9 +146,9 @@
             // 
             // Total
             // 
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = "0";
-            Total.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = "0";
+            Total.DefaultCellStyle = dataGridViewCellStyle4;
             Total.HeaderText = "Total";
             Total.MinimumWidth = 6;
             Total.Name = "Total";
@@ -163,11 +165,33 @@
             btnSale.UseVisualStyleBackColor = true;
             btnSale.Click += btnSale_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14F);
+            label3.Location = new Point(34, 328);
+            label3.Name = "label3";
+            label3.Size = new Size(70, 32);
+            label3.TabIndex = 7;
+            label3.Text = "Total:";
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 14F);
+            lblTotal.Location = new Point(113, 328);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(65, 32);
+            lblTotal.TabIndex = 8;
+            lblTotal.Text = "$ 0.0";
+            // 
             // FormNewSale
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(725, 392);
+            Controls.Add(lblTotal);
+            Controls.Add(label3);
             Controls.Add(btnSale);
             Controls.Add(dgv);
             Controls.Add(btnAdd);
@@ -203,5 +227,7 @@
         private DataGridViewLinkColumn BeerName;
         private DataGridViewLinkColumn UnitPrice;
         private DataGridViewLinkColumn Total;
+        private Label label3;
+        private Label lblTotal;
     }
 }

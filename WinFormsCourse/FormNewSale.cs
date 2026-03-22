@@ -49,6 +49,7 @@ namespace WinFormsCourse
                 cboBeer.SelectedIndex = 0;
             }
             cboBeer.Focus();
+            GetTotal();
         }
 
         private async void btnSale_Click(object sender, EventArgs e)
@@ -78,6 +79,17 @@ namespace WinFormsCourse
                 MessageBox.Show("Ocurrio un error: " + ex.Message);
             }
 
+        }
+
+        private void GetTotal()
+        {
+            decimal total = 0;
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                total += decimal.Parse(row.Cells[4].Value.ToString());
+            }
+
+            lblTotal.Text = total.ToString("C");
         }
     }
 }
