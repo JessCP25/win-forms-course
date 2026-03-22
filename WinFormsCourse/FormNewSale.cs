@@ -1,20 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ApplicationBusiness;
+using Entities;
+using Repository.AdditionalDataClass;
 
 namespace WinFormsCourse
 {
     public partial class FormNewSale : Form
     {
-        public FormNewSale()
+        private readonly IRepositoryAdditionalData<Beer, BeerAdditionalData> _beerRepository;
+
+        public FormNewSale(IRepositoryAdditionalData<Beer, BeerAdditionalData> beerRepository)
         {
             InitializeComponent();
+            _beerRepository = beerRepository;
+        }
+
+        private async Task ChargeData()
+        {
+            cboBeer.DataSource = await _beerRepository.GetAllAsync();
+            cboBeer.DisplayMember = "Name";
+            cboBeer.ValueMember = "Id";
+            if (cboBeer.Items.Count > 0)
+            {
+                cboBeer.SelectedIndex = 0;
+            }
+        }
+
+        private async void FormNewSale_Load(object sender, EventArgs e)
+        {
+            await ChargeData();
         }
     }
 }

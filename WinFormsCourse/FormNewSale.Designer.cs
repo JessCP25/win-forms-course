@@ -125,6 +125,7 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Nueva venta";
+            Load += FormNewSale_Load;
             ((System.ComponentModel.ISupportInitialize)txtQuantity).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
