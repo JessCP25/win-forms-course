@@ -35,8 +35,10 @@
             cervezasToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             btnVenta = new Button();
+            dgv = new DataGridView();
             menuStrip2.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -98,11 +100,29 @@
             btnVenta.UseVisualStyleBackColor = true;
             btnVenta.Click += btnVenta_Click;
             // 
+            // dgv
+            // 
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
+            dgv.AllowUserToResizeRows = false;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.Dock = DockStyle.Fill;
+            dgv.Location = new Point(0, 141);
+            dgv.MultiSelect = false;
+            dgv.Name = "dgv";
+            dgv.ReadOnly = true;
+            dgv.RowHeadersVisible = false;
+            dgv.RowHeadersWidth = 51;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv.Size = new Size(800, 309);
+            dgv.TabIndex = 3;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgv);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
             Controls.Add(menuStrip2);
@@ -114,6 +134,7 @@
             menuStrip2.ResumeLayout(false);
             menuStrip2.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -127,5 +148,6 @@
         private ToolStripMenuItem cervezasToolStripMenuItem;
         private Panel panel1;
         private Button btnVenta;
+        private DataGridView dgv;
     }
 }
