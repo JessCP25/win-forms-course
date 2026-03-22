@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             cboBeer = new ComboBox();
             label2 = new Label();
@@ -35,6 +37,11 @@
             btnAdd = new Button();
             dgv = new DataGridView();
             btnSale = new Button();
+            IdBeer = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewLinkColumn();
+            BeerName = new DataGridViewLinkColumn();
+            UnitPrice = new DataGridViewLinkColumn();
+            Total = new DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)txtQuantity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
@@ -87,6 +94,7 @@
             dgv.AllowUserToDeleteRows = false;
             dgv.AllowUserToResizeRows = false;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.Columns.AddRange(new DataGridViewColumn[] { IdBeer, Quantity, BeerName, UnitPrice, Total });
             dgv.Location = new Point(34, 80);
             dgv.MultiSelect = false;
             dgv.Name = "dgv";
@@ -105,6 +113,53 @@
             btnSale.TabIndex = 6;
             btnSale.Text = "Agregar Venta";
             btnSale.UseVisualStyleBackColor = true;
+            // 
+            // IdBeer
+            // 
+            IdBeer.HeaderText = "IdBeer";
+            IdBeer.MinimumWidth = 6;
+            IdBeer.Name = "IdBeer";
+            IdBeer.ReadOnly = true;
+            IdBeer.Visible = false;
+            IdBeer.Width = 125;
+            // 
+            // Quantity
+            // 
+            Quantity.HeaderText = "Cantidad";
+            Quantity.MinimumWidth = 6;
+            Quantity.Name = "Quantity";
+            Quantity.ReadOnly = true;
+            Quantity.Width = 125;
+            // 
+            // BeerName
+            // 
+            BeerName.HeaderText = "Nombre";
+            BeerName.MinimumWidth = 6;
+            BeerName.Name = "BeerName";
+            BeerName.ReadOnly = true;
+            BeerName.Width = 125;
+            // 
+            // UnitPrice
+            // 
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = "0";
+            UnitPrice.DefaultCellStyle = dataGridViewCellStyle1;
+            UnitPrice.HeaderText = "Precio unitario";
+            UnitPrice.MinimumWidth = 6;
+            UnitPrice.Name = "UnitPrice";
+            UnitPrice.ReadOnly = true;
+            UnitPrice.Width = 125;
+            // 
+            // Total
+            // 
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = "0";
+            Total.DefaultCellStyle = dataGridViewCellStyle2;
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.ReadOnly = true;
+            Total.Width = 125;
             // 
             // FormNewSale
             // 
@@ -141,5 +196,10 @@
         private Button btnAdd;
         private DataGridView dgv;
         private Button btnSale;
+        private DataGridViewTextBoxColumn IdBeer;
+        private DataGridViewLinkColumn Quantity;
+        private DataGridViewLinkColumn BeerName;
+        private DataGridViewLinkColumn UnitPrice;
+        private DataGridViewLinkColumn Total;
     }
 }
